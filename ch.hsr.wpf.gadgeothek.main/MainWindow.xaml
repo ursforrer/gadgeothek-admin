@@ -1,0 +1,25 @@
+﻿<Controls:MetroWindow x:Class="ch.hsr.wpf.gadgeothek.main.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"               
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:Controls="http://metro.mahapps.com/winfx/xaml/controls"
+        xmlns:local="clr-namespace:ch.hsr.wpf.gadgeothek.main"
+        mc:Ignorable="d"
+        Title="Gadgeothek Admin Interface" Height="350" Width="525">
+    <Grid>
+        <TabControl>
+            <TabItem Header="Gadgets">
+                <DockPanel>
+                    <Button x:Name="addbutton" DockPanel.Dock="Bottom" Content="Add gadget" Click="addbutton_Click"></Button>
+                    <DataGrid ItemsSource="{Binding Gadgets}"></DataGrid>
+                </DockPanel>
+                
+            </TabItem>
+            <TabItem Header="Ausleihen">
+                <DataGrid ItemsSource="{Binding Loans}"></DataGrid>
+            </TabItem>
+        </TabControl>
+        
+    </Grid>
+</Controls:MetroWindow>

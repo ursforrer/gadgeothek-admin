@@ -1,0 +1,43 @@
+﻿<Controls:MetroWindow x:Class="ch.hsr.wpf.gadgeothek.main.newGadget"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:Controls="http://metro.mahapps.com/winfx/xaml/controls"
+        xmlns:local="clr-namespace:ch.hsr.wpf.gadgeothek.main"
+        mc:Ignorable="d"
+        Title="Gadgeothek - Add new Gadget" Height="350" Width="525">
+    <Grid>
+        <DockPanel>
+            <DockPanel DockPanel.Dock="Bottom">
+                <Button x:Name="save" Content="Save" Margin="10,10,0,10" Width="100" HorizontalAlignment="Left" Click="save_Click"></Button>
+                <Button x:Name="cancel" Content="Cancel" Margin="10,10,10,10" Width="100" HorizontalAlignment="Right" Click="cancel_Click"></Button>
+            </DockPanel>
+            <StackPanel Orientation="Vertical">
+                <TextBlock Margin="20,10,0,10">Add the data for a new gadget !</TextBlock>
+                <DockPanel Margin="20,5,20,0">
+                    <TextBlock DockPanel.Dock="Left" Width="150"><Run Text="Description"/></TextBlock>
+                    <TextBox x:Name="input_add_description" HorizontalAlignment="Stretch"/>
+                </DockPanel>
+                <DockPanel Margin="20,10,20,0">
+                    <TextBlock DockPanel.Dock="Left" Width="150"><Run Text="Manufacturer"/></TextBlock>
+                    <TextBox x:Name="input_add_manufacturer" HorizontalAlignment="Stretch"/>
+                </DockPanel>
+                <DockPanel Margin="20,10,20,0">
+                    <TextBlock DockPanel.Dock="Left" Width="150">Price</TextBlock>
+                    <TextBox x:Name="input_add_price" HorizontalAlignment="Stretch"/>
+                </DockPanel>
+                <DockPanel Margin="20,10,20,0">
+                    <TextBlock DockPanel.Dock="Left" Width="150">Condition</TextBlock>
+                    <ComboBox>
+                        <ComboBoxItem>NEW</ComboBoxItem>
+                        <ComboBoxItem>GOOD</ComboBoxItem>
+                        <ComboBoxItem>DAMAGED</ComboBoxItem>
+                        <ComboBoxItem>WASTED</ComboBoxItem>
+                        <ComboBoxItem>LOST</ComboBoxItem>
+                    </ComboBox>
+                </DockPanel>
+            </StackPanel>
+        </DockPanel> 
+    </Grid>
+</Controls:MetroWindow>
