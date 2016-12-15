@@ -59,10 +59,6 @@ namespace ch.hsr.wpf.gadgeothek.main
                         case WebSocketClientNotificationTypeEnum.Delete:
                             Gadgets.Remove(gadget);
                             break;
-                        case WebSocketClientNotificationTypeEnum.Update:
-                            Gadgets.Remove(gadget);
-                            Gadgets.Add(gadget);
-                            break;
                     }
                 }
                 else if (e.Notification.Target == typeof(Loan).Name.ToLower())
@@ -76,10 +72,6 @@ namespace ch.hsr.wpf.gadgeothek.main
                             break;
                         case WebSocketClientNotificationTypeEnum.Delete:
                             Loans.Remove(loan);
-                            break;
-                        case WebSocketClientNotificationTypeEnum.Update:
-                            Loans.Remove(loan);
-                            Loans.Add(loan);
                             break;
                     }
                 }
@@ -127,34 +119,6 @@ namespace ch.hsr.wpf.gadgeothek.main
                 };
             }
 
-        }
-
-        private void editbutton_Click(object sender, RoutedEventArgs e)
-        {
-            var gadget = (Gadget)gadgets.SelectedItem;
-            if (gadgets.SelectedItem == null)
-            {
-                // No Gadget is selected
-                MessageBox.Show("Please first selecet a item and press than Edit Gadget.");
-            }
-            else
-            {
-                editWindow win4 = new editWindow(gadget);
-                win4.Show();
-                win4.save.Click += delegate
-                {
-                    if (service.UpdateGadget(gadget))
-                    {
-                        // Close the window, if the operation was succesfull
-                        win4.Close();
-                    }
-                    else
-                    {
-                        // Print an error message if the operation failed.
-                        MessageBox.Show("It didn't work. Check your connection to the server and try it again.");
-                    }
-                };
-            }
         }
     }
 }

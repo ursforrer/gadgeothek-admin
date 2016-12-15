@@ -6,6 +6,8 @@
         xmlns:Controls="http://metro.mahapps.com/winfx/xaml/controls"
         xmlns:local="clr-namespace:ch.hsr.wpf.gadgeothek.main"
         mc:Ignorable="d"
+        BorderBrush="Black"
+        BorderThickness="2"              
         Title="Gadgeothek - Add new Gadget" Height="350" Width="525">
     <Grid>
         <DockPanel>
@@ -14,9 +16,9 @@
                 <Button x:Name="no" Content="No, Cancel" Margin="10,10,10,10" Width="100" HorizontalAlignment="Right" Click="no_Click"></Button>
             </DockPanel>
             <StackPanel Orientation="Vertical">
-                <TextBlock Margin="20,10,0,10" Text="Delete Gadget" />
+                <TextBlock Margin="20,10,0,10" FontSize="32">Delete Gadget</TextBlock>
                 <TextBlock Margin="20,10,0,10">Are you sure, you want to delete this gadget?</TextBlock>
-                <Grid Margin="0,20">
+                <Grid Margin="20,10,0,10">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="1*" />
                         <ColumnDefinition Width="1*" />

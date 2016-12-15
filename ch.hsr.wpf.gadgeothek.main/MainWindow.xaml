@@ -6,15 +6,16 @@
         xmlns:Controls="http://metro.mahapps.com/winfx/xaml/controls"
         xmlns:local="clr-namespace:ch.hsr.wpf.gadgeothek.main"
         mc:Ignorable="d"
-        Title="Gadgeothek Admin Interface" Height="350" Width="525">
+        BorderBrush="Black"
+        BorderThickness="2"
+        Title="Gadgeothek Admin Interface" Height="Auto" Width="Auto">
     <Grid>
         <TabControl>
             <TabItem Header="Gadgets">
                 <DockPanel>
                     <DockPanel DockPanel.Dock="Bottom">
-                        <Button x:Name="addbutton" DockPanel.Dock="Right" Content="Add gadget" Click="addbutton_Click"></Button>
-                        <Button x:Name="removebutton" DockPanel.Dock="Right" Content="Remove gadget" Click="removebutton_Click"></Button>
-                        <Button x:Name="editbutton" DockPanel.Dock="Right" Width="100" Content="Edit gadget" Click="editbutton_Click"></Button>
+                        <Button x:Name="addbutton" Margin="10,10,0,10" Width="100" HorizontalAlignment="Left" Content="Add gadget" Click="addbutton_Click"></Button>
+                        <Button x:Name="removebutton" Margin="10,10,10,10" Width="100" HorizontalAlignment="Right" Content="Remove gadget" Click="removebutton_Click"></Button>
                     </DockPanel>
                     
                     <DataGrid Name="gadgets" IsReadOnly="True" ItemsSource="{Binding Gadgets}" AutoGenerateColumns="False">
