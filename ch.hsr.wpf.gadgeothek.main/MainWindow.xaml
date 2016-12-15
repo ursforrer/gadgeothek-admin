@@ -11,13 +11,35 @@
         <TabControl>
             <TabItem Header="Gadgets">
                 <DockPanel>
-                    <Button x:Name="addbutton" DockPanel.Dock="Bottom" Content="Add gadget" Click="addbutton_Click"></Button>
-                    <DataGrid ItemsSource="{Binding Gadgets}"></DataGrid>
+                    <DockPanel DockPanel.Dock="Bottom">
+                        <Button x:Name="addbutton" DockPanel.Dock="Right" Content="Add gadget" Click="addbutton_Click"></Button>
+                        <Button x:Name="removebutton" DockPanel.Dock="Right" Content="Remove gadget" Click="removebutton_Click"></Button>
+                        <Button x:Name="editbutton" DockPanel.Dock="Right" Width="100" Content="Edit gadget" Click="editbutton_Click"></Button>
+                    </DockPanel>
+                    
+                    <DataGrid Name="gadgets" IsReadOnly="True" ItemsSource="{Binding Gadgets}" AutoGenerateColumns="False">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Inventory Number" MinWidth="100" Binding="{Binding InventoryNumber}" IsReadOnly="True" />
+                            <DataGridTextColumn Header="Name" MinWidth="100" Binding="{Binding Name}" IsReadOnly="True" />
+                            <DataGridTextColumn Header="Manufactur" Binding="{Binding Manufacturer}" IsReadOnly="True" />
+                            <DataGridTextColumn Header="Price" Binding="{Binding Price}" IsReadOnly="True"/>
+                            <DataGridTextColumn Header="Condition" Binding="{Binding Condition}" IsReadOnly="True"/>
+                        </DataGrid.Columns>
+                    </DataGrid>    
                 </DockPanel>
                 
             </TabItem>
             <TabItem Header="Ausleihen">
-                <DataGrid ItemsSource="{Binding Loans}"></DataGrid>
+                <DataGrid IsReadOnly="True" ItemsSource="{Binding Loans}" AutoGenerateColumns="False">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Customer" MinWidth="100" Binding="{Binding Customer.Name}" IsReadOnly="True" />
+                        <DataGridTextColumn Header="Gadget" MinWidth="100" Binding="{Binding Gadget.Name}" IsReadOnly="True" />
+                        <DataGridTextColumn Header="Loan Date" Binding="{Binding PickupDate}" IsReadOnly="True" />
+                        <DataGridTextColumn Header="Return Date" Binding="{Binding ReturnDate}" IsReadOnly="True" />
+                        <DataGridCheckBoxColumn Header="Overdue" Binding="{Binding IsOverdue, Mode=OneWay}" IsReadOnly="True"/>
+                        <DataGridCheckBoxColumn Header="Returned" Binding="{Binding WasReturned, Mode=OneWay}" IsReadOnly="True"/>
+                    </DataGrid.Columns>
+                </DataGrid>
             </TabItem>
         </TabControl>
         

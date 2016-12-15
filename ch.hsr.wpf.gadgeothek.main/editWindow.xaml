@@ -1,0 +1,46 @@
+﻿<Controls:MetroWindow x:Class="ch.hsr.wpf.gadgeothek.main.editWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:Controls="http://metro.mahapps.com/winfx/xaml/controls"
+        xmlns:local="clr-namespace:ch.hsr.wpf.gadgeothek.main"
+        mc:Ignorable="d"
+        Title="Gadgeothek - Edit Gadget" Height="350" Width="525">
+    <Grid>
+        <DockPanel>
+            <DockPanel DockPanel.Dock="Bottom">
+                <Button x:Name="save" Content="Save changes" Margin="10,10,0,10" Width="100" HorizontalAlignment="Left"></Button>
+                <Button x:Name="canel" Content="Discard changes" Margin="10,10,10,10" Width="100" HorizontalAlignment="Right" Click="cancel_Click"></Button>
+            </DockPanel>
+            <StackPanel Orientation="Vertical">
+                <TextBlock Margin="20,10,0,10" Text="Edit Gadget" />
+                <TextBlock Margin="20,10,0,10">Please made your changes and than save the gadget.</TextBlock>
+                <Grid Margin="0,20">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1*" />
+                        <ColumnDefinition Width="1*" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="1*" />
+                        <RowDefinition Height="1*" />
+                        <RowDefinition Height="1*" />
+                        <RowDefinition Height="1*" />
+                        <RowDefinition Height="1*" />
+
+                    </Grid.RowDefinitions>
+                    <Label Grid.Row="0"  Content="Number"/>
+                    <Label Grid.Row="1" Content="Condition"/>
+                    <Label Grid.Row="2" Content="Price"/>
+                    <Label Grid.Row="3" Content="Manufacturer"/>
+                    <Label Grid.Row="4" Content="Name"/>
+                    <TextBlock Grid.Row="0" Grid.Column="1" VerticalAlignment="Center" x:Name="nr"/>
+                    <TextBox Grid.Row="4" Grid.Column="1" VerticalAlignment="Center" x:Name="name"/>
+                    <TextBox Grid.Row="3" Grid.Column="1" VerticalAlignment="Center" x:Name="manu"/>
+                    <TextBox Grid.Row="2" Grid.Column="1" VerticalAlignment="Center" x:Name="price"/>
+                    <TextBox Grid.Row="1" Grid.Column="1" VerticalAlignment="Center" x:Name="cond"/>
+                </Grid>
+            </StackPanel>
+        </DockPanel>
+    </Grid>
+</Controls:MetroWindow>

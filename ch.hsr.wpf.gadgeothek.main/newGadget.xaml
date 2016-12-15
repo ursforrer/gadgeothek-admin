@@ -29,7 +29,7 @@
                 </DockPanel>
                 <DockPanel Margin="20,10,20,0">
                     <TextBlock DockPanel.Dock="Left" Width="150">Condition</TextBlock>
-                    <ComboBox>
+                    <ComboBox Name="input_add_condition">
                         <ComboBoxItem>NEW</ComboBoxItem>
                         <ComboBoxItem>GOOD</ComboBoxItem>
                         <ComboBoxItem>DAMAGED</ComboBoxItem>
