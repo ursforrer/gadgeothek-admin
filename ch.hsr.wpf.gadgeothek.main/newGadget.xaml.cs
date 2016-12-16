@@ -3,6 +3,7 @@ using ch.hsr.wpf.gadgeothek.service;
 using MahApps.Metro.Controls;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -27,8 +28,7 @@ namespace ch.hsr.wpf.gadgeothek.main
         public newGadget()
         {
             InitializeComponent();
-            var serverUrl = "http://localhost:8080";
-            service = new LibraryAdminService(serverUrl);
+            service = new LibraryAdminService(ConfigurationManager.AppSettings["serverGadgeothek"]);
         }
 
         private void cancel_Click(object sender, RoutedEventArgs e)

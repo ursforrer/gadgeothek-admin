@@ -17,6 +17,7 @@ using ch.hsr.wpf.gadgeothek.service;
 using System.Collections.ObjectModel;
 using MahApps.Metro.Controls;
 using ch.hsr.wpf.gadgeothek.websocket;
+using System.Configuration;
 
 namespace ch.hsr.wpf.gadgeothek.main
 {
@@ -31,10 +32,8 @@ namespace ch.hsr.wpf.gadgeothek.main
         public MainWindow()
         {
             InitializeComponent();
-            var serverUrl = "http://localhost:8080";
-            service = new LibraryAdminService(serverUrl);
-            var client = new websocket.WebSocketClient(serverUrl);
-            RestServiceBase.IsLogging = true;
+            service = new LibraryAdminService(ConfigurationManager.AppSettings["serverGadgeothek"]);
+            var client = new websocket.WebSocketClient(ConfigurationManager.AppSettings["serverGadgeothek"]);
 
             DataContext = this;
 
@@ -88,8 +87,8 @@ namespace ch.hsr.wpf.gadgeothek.main
 
         private void addbutton_Click(object sender, RoutedEventArgs e)
         {
-            newGadget win2 = new newGadget();
-            win2.Show();
+            newGadget newwindow = new newGadget();
+            newwindow.Show();
         }
 
         private void removebutton_Click(object sender, RoutedEventArgs e)
@@ -102,14 +101,14 @@ namespace ch.hsr.wpf.gadgeothek.main
             }
             else
             {
-                deleteWindow win3 = new deleteWindow(gadget);
-                win3.Show();
-                win3.yes.Click += delegate
+                deleteWindow deletewindow = new deleteWindow(gadget);
+                deletewindow.Show();
+                deletewindow.yes.Click += delegate
                 {
                     if (service.DeleteGadget(gadget))
                     {
                         // Close the window, if the operation was succesfull
-                        win3.Close();
+                        deletewindow.Close();
                     }
                     else
                     {
