@@ -1,0 +1,25 @@
+﻿<UserControl x:Class="ch.hsr.wpf.gadgeothek.main.windows.GadgetsTab"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"               
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:Controls="http://metro.mahapps.com/winfx/xaml/controls"
+        xmlns:local="clr-namespace:ch.hsr.wpf.gadgeothek.main"
+        mc:Ignorable="d">
+    <DockPanel>
+                    <DockPanel DockPanel.Dock="Bottom">
+            <Button x:Name="addbutton" Margin="10,10,0,10" Width="100" HorizontalAlignment="Left" Content="Add gadget" Command="{Binding newGadgetCom}"></Button>
+                        <Button x:Name="removebutton" Margin="10,10,10,10" Width="100" HorizontalAlignment="Right" Content="Remove gadget" Command="{Binding delGadgetCom}"></Button>
+                    </DockPanel>
+
+                    <DataGrid Name="gadgetsview" IsReadOnly="True" ItemsSource="{Binding Gadgets}" SelectedItem="{Binding selGadget}" AutoGenerateColumns="False">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Inventory Number" MinWidth="100" Binding="{Binding InventoryNumber}" IsReadOnly="True" />
+                            <DataGridTextColumn Header="Name" MinWidth="100" Binding="{Binding Name}" IsReadOnly="True" />
+                            <DataGridTextColumn Header="Manufactur" Binding="{Binding Manufacturer}" IsReadOnly="True" />
+                            <DataGridTextColumn Header="Price" Binding="{Binding Price}" IsReadOnly="True"/>
+                            <DataGridTextColumn Header="Condition" Binding="{Binding Condition}" IsReadOnly="True"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </DockPanel>
+</UserControl>

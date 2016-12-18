@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:Controls="http://metro.mahapps.com/winfx/xaml/controls"
         xmlns:local="clr-namespace:ch.hsr.wpf.gadgeothek.main"
+        xmlns:windows="clr-namespace:ch.hsr.wpf.gadgeothek.main.windows"
         mc:Ignorable="d"
         BorderBrush="Black"
         BorderThickness="2"
@@ -12,35 +13,10 @@
     <Grid>
         <TabControl>
             <TabItem Header="Gadgets">
-                <DockPanel>
-                    <DockPanel DockPanel.Dock="Bottom">
-                        <Button x:Name="addbutton" Margin="10,10,0,10" Width="100" HorizontalAlignment="Left" Content="Add gadget" Click="addbutton_Click"></Button>
-                        <Button x:Name="removebutton" Margin="10,10,10,10" Width="100" HorizontalAlignment="Right" Content="Remove gadget" Click="removebutton_Click"></Button>
-                    </DockPanel>
-                    
-                    <DataGrid Name="gadgets" IsReadOnly="True" ItemsSource="{Binding Gadgets}" AutoGenerateColumns="False">
-                        <DataGrid.Columns>
-                            <DataGridTextColumn Header="Inventory Number" MinWidth="100" Binding="{Binding InventoryNumber}" IsReadOnly="True" />
-                            <DataGridTextColumn Header="Name" MinWidth="100" Binding="{Binding Name}" IsReadOnly="True" />
-                            <DataGridTextColumn Header="Manufactur" Binding="{Binding Manufacturer}" IsReadOnly="True" />
-                            <DataGridTextColumn Header="Price" Binding="{Binding Price}" IsReadOnly="True"/>
-                            <DataGridTextColumn Header="Condition" Binding="{Binding Condition}" IsReadOnly="True"/>
-                        </DataGrid.Columns>
-                    </DataGrid>    
-                </DockPanel>
-                
+                <windows:GadgetsTab />
             </TabItem>
             <TabItem Header="Ausleihen">
-                <DataGrid IsReadOnly="True" ItemsSource="{Binding Loans}" AutoGenerateColumns="False">
-                    <DataGrid.Columns>
-                        <DataGridTextColumn Header="Customer" MinWidth="100" Binding="{Binding Customer.Name}" IsReadOnly="True" />
-                        <DataGridTextColumn Header="Gadget" MinWidth="100" Binding="{Binding Gadget.Name}" IsReadOnly="True" />
-                        <DataGridTextColumn Header="Loan Date" Binding="{Binding PickupDate}" IsReadOnly="True" />
-                        <DataGridTextColumn Header="Return Date" Binding="{Binding ReturnDate, StringFormat={}{0:MM.dd.yyyy}}" IsReadOnly="True" />
-                        <DataGridCheckBoxColumn Header="Overdue" Binding="{Binding IsOverdue, StringFormat={}{0:MM.dd.yyyy}, Mode=OneWay}" IsReadOnly="True"/>
-                        <DataGridCheckBoxColumn Header="Returned" Binding="{Binding WasReturned, Mode=OneWay}" IsReadOnly="True"/>
-                    </DataGrid.Columns>
-                </DataGrid>
+                <windows:LoansTab />
             </TabItem>
         </TabControl>
         

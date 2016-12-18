@@ -39,7 +39,8 @@ namespace ch.hsr.wpf.gadgeothek.main
 
         private void save_Click(object sender, RoutedEventArgs e)
         {
-            var gadget = new Gadget(input_add_description.Text) { Manufacturer = input_add_manufacturer.Text, Price = double.Parse(input_add_price.Text)};
+            domain.Condition cond = mapToEnum(input_add_condition.SelectedIndex);
+            var gadget = new Gadget(input_add_description.Text) { Manufacturer = input_add_manufacturer.Text, Price = double.Parse(input_add_price.Text), Condition = cond };
             if (!service.AddGadget(gadget))
             {
                 // Error Output
@@ -49,6 +50,27 @@ namespace ch.hsr.wpf.gadgeothek.main
             else
             {
                 this.Close();
+            }
+        }
+
+        private domain.Condition mapToEnum(int index)
+        {
+            // Own method, because Enum.Parse is not working
+            switch(index)
+            {
+                case 0:
+                    return domain.Condition.New;
+                case 1:
+                    return domain.Condition.Good;
+                case 2:
+                    return domain.Condition.Damaged;
+                case 3:
+                    return domain.Condition.Waste;
+                case 4:
+                    return domain.Condition.Lost;
+                default:
+                    return domain.Condition.New;
+
             }
         }
     }

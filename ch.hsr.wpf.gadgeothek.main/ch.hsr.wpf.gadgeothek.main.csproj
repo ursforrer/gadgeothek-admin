@@ -64,6 +64,16 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="RelayCommand.cs" />
+    <Compile Include="vms\Base.cs" />
+    <Compile Include="vms\GadgetViewModel.cs" />
+    <Compile Include="vms\LoanViewModel.cs" />
+    <Compile Include="windows\LoansTab.xaml.cs">
+      <DependentUpon>LoansTab.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="windows\GadgetsTab.xaml.cs">
+      <DependentUpon>GadgetsTab.xaml</DependentUpon>
+    </Compile>
     <Page Include="deleteWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -84,6 +94,14 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="newGadget.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="windows\LoansTab.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="windows\GadgetsTab.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -117,7 +135,9 @@
     <AppDesigner Include="Properties\" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ch.hsr.wpf.gadgeothek\ch.hsr.wpf.gadgeothek.csproj">

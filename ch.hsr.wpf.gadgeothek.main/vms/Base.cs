@@ -1,17 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.ComponentModel;
 
 namespace ch.hsr.wpf.gadgeothek.main.vms
 {
-    class Base
+    public abstract class Base : INotifyPropertyChanged
     {
-        // Base Code INotifyPropertyChanged
-        public abstract class BindableBase : INotifyPropertyChanged
-        {
             public event PropertyChangedEventHandler PropertyChanged;
             protected bool SetProperty<T>(ref T field, T value, string name = null)
             {
@@ -25,6 +17,5 @@ namespace ch.hsr.wpf.gadgeothek.main.vms
             {
                 PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
             }
-        }
     }
 }

@@ -1,0 +1,19 @@
+﻿<UserControl x:Class="ch.hsr.wpf.gadgeothek.main.windows.LoansTab"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"               
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:Controls="http://metro.mahapps.com/winfx/xaml/controls"
+        xmlns:local="clr-namespace:ch.hsr.wpf.gadgeothek.main"
+        mc:Ignorable="d">
+    <DataGrid IsReadOnly="True" ItemsSource="{Binding Loans}" SelectedItem="{Binding selLoan}" AutoGenerateColumns="False">
+        <DataGrid.Columns>
+            <DataGridTextColumn Header="Customer" MinWidth="100" Binding="{Binding Customer.Name}" IsReadOnly="True" />
+            <DataGridTextColumn Header="Gadget" MinWidth="100" Binding="{Binding Gadget.Name}" IsReadOnly="True" />
+            <DataGridTextColumn Header="Loan Date" Binding="{Binding PickupDate}" IsReadOnly="True" />
+            <DataGridTextColumn Header="Return Date" Binding="{Binding ReturnDate, StringFormat={}{0:MM.dd.yyyy}}" IsReadOnly="True" />
+            <DataGridCheckBoxColumn Header="Overdue" Binding="{Binding IsOverdue, StringFormat={}{0:MM.dd.yyyy}, Mode=OneWay}" IsReadOnly="True"/>
+            <DataGridCheckBoxColumn Header="Returned" Binding="{Binding WasReturned, Mode=OneWay}" IsReadOnly="True"/>
+        </DataGrid.Columns>
+    </DataGrid>
+</UserControl>
