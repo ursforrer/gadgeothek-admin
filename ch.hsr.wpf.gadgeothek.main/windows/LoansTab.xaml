@@ -6,13 +6,14 @@
         xmlns:Controls="http://metro.mahapps.com/winfx/xaml/controls"
         xmlns:local="clr-namespace:ch.hsr.wpf.gadgeothek.main"
         mc:Ignorable="d">
-    <DataGrid IsReadOnly="True" ItemsSource="{Binding Loans}" SelectedItem="{Binding selLoan}" AutoGenerateColumns="False">
+    <DataGrid SelectionMode="Single" IsReadOnly="True" ItemsSource="{Binding Loans}" SelectedItem="{Binding selLoan}" AutoGenerateColumns="False">
         <DataGrid.Columns>
             <DataGridTextColumn Header="Customer" MinWidth="100" Binding="{Binding Customer.Name}" IsReadOnly="True" />
             <DataGridTextColumn Header="Gadget" MinWidth="100" Binding="{Binding Gadget.Name}" IsReadOnly="True" />
-            <DataGridTextColumn Header="Loan Date" Binding="{Binding PickupDate}" IsReadOnly="True" />
-            <DataGridTextColumn Header="Return Date" Binding="{Binding ReturnDate, StringFormat={}{0:MM.dd.yyyy}}" IsReadOnly="True" />
-            <DataGridCheckBoxColumn Header="Overdue" Binding="{Binding IsOverdue, StringFormat={}{0:MM.dd.yyyy}, Mode=OneWay}" IsReadOnly="True"/>
+            <DataGridTextColumn Header="Loan Date" Binding="{Binding PickupDate, StringFormat={}{0:dd.MM.yyyy}}" IsReadOnly="True" />
+            <DataGridTextColumn Header="To be returned until" Binding="{Binding OverDueDate, StringFormat={}{0:dd.MM.yyyy}}" IsReadOnly="True" />
+            <DataGridTextColumn Header="Return Date" Binding="{Binding ReturnDate, StringFormat={}{0:dd.MM.yyyy}}" IsReadOnly="True" />
+            <DataGridCheckBoxColumn Header="Overdue" Binding="{Binding IsOverdue, StringFormat={}{0:dd.MM.yyyy}, Mode=OneWay}" IsReadOnly="True"/>
             <DataGridCheckBoxColumn Header="Returned" Binding="{Binding WasReturned, Mode=OneWay}" IsReadOnly="True"/>
         </DataGrid.Columns>
     </DataGrid>

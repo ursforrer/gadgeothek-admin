@@ -40,17 +40,27 @@ namespace ch.hsr.wpf.gadgeothek.main
         private void save_Click(object sender, RoutedEventArgs e)
         {
             domain.Condition cond = mapToEnum(input_add_condition.SelectedIndex);
-            var gadget = new Gadget(input_add_description.Text) { Manufacturer = input_add_manufacturer.Text, Price = double.Parse(input_add_price.Text), Condition = cond };
-            if (!service.AddGadget(gadget))
+            if (string.IsNullOrEmpty(input_add_description.Text) || string.IsNullOrEmpty(input_add_manufacturer.Text) || string.IsNullOrEmpty(input_add_price.Text))
             {
-                // Error Output
-                MessageBox.Show($"{gadget} konnte nicht hinzugefügt werden...");
-                Console.WriteLine($"{gadget} konnte nicht hinzugefügt werden...");
+                // Do nothing
+                MessageBox.Show("Bitte alle Felder ausfüllen.");
+                Console.WriteLine("Bitte alle Felder ausfüllen.");
             }
             else
             {
-                this.Close();
+                var gadget = new Gadget(input_add_description.Text) { Manufacturer = input_add_manufacturer.Text, Price = double.Parse(input_add_price.Text), Condition = cond };
+                if (!service.AddGadget(gadget))
+                {
+                    // Error Output
+                    MessageBox.Show($"{gadget} konnte nicht hinzugefügt werden...");
+                    Console.WriteLine($"{gadget} konnte nicht hinzugefügt werden...");
+                }
+                else
+                {
+                    this.Close();
+                }
             }
+            
         }
 
         private domain.Condition mapToEnum(int index)

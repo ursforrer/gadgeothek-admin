@@ -9,7 +9,12 @@ namespace ch.hsr.wpf.gadgeothek.main.vms
 {
     class LoanViewModel : Base
     {
-        public ObservableCollection<Loan> Loans { get; set; }
+        public ObservableCollection<Loan> _Loans;
+        public ObservableCollection<Loan> Loans
+        {
+            get { return _Loans; }
+            set { SetProperty(ref _Loans, value, nameof(Loans)); }
+        }
         private LibraryAdminService service;
         private websocket.WebSocketClient client;
 
@@ -36,10 +41,13 @@ namespace ch.hsr.wpf.gadgeothek.main.vms
                     switch (e.Notification.Type)
                     {
                         case WebSocketClientNotificationTypeEnum.Add:
-                            Loans.Add(loan);
+                            Loans = new ObservableCollection<Loan>(service.GetAllLoans());
                             break;
                         case WebSocketClientNotificationTypeEnum.Delete:
-                            Loans.Remove(loan);
+                            Loans = new ObservableCollection<Loan>(service.GetAllLoans());
+                            break;
+                        case WebSocketClientNotificationTypeEnum.Update:
+                            Loans = new ObservableCollection<Loan>(service.GetAllLoans());
                             break;
                     }
                 }

@@ -12,7 +12,7 @@
                         <Button x:Name="removebutton" Margin="10,10,10,10" Width="100" HorizontalAlignment="Right" Content="Remove gadget" Command="{Binding delGadgetCom}"></Button>
                     </DockPanel>
 
-                    <DataGrid Name="gadgetsview" IsReadOnly="True" ItemsSource="{Binding Gadgets}" SelectedItem="{Binding selGadget}" AutoGenerateColumns="False">
+        <DataGrid SelectionMode="Single" Name="gadgetsview" IsReadOnly="True" ItemsSource="{Binding Gadgets}" SelectedItem="{Binding selGadget}" AutoGenerateColumns="False">
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="Inventory Number" MinWidth="100" Binding="{Binding InventoryNumber}" IsReadOnly="True" />
                             <DataGridTextColumn Header="Name" MinWidth="100" Binding="{Binding Name}" IsReadOnly="True" />

@@ -15,7 +15,7 @@
             <TabItem Header="Gadgets">
                 <windows:GadgetsTab />
             </TabItem>
-            <TabItem Header="Ausleihen">
+            <TabItem Header="Loans">
                 <windows:LoansTab />
             </TabItem>
         </TabControl>
