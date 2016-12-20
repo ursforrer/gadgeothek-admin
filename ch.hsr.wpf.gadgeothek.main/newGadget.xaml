@@ -6,6 +6,7 @@
         xmlns:Controls="http://metro.mahapps.com/winfx/xaml/controls"
         xmlns:local="clr-namespace:ch.hsr.wpf.gadgeothek.main"
         mc:Ignorable="d"
+        x:Name="NewWindow"              
         BorderBrush="Black"
         BorderThickness="2"
         Icon="icon.ico"              
@@ -13,32 +14,27 @@
     <Grid>
         <DockPanel>
             <DockPanel DockPanel.Dock="Bottom">
-                <Button x:Name="save" Content="Save" Margin="10,10,0,10" Width="100" HorizontalAlignment="Left" Click="save_Click"></Button>
-                <Button x:Name="cancel" Content="Cancel" Margin="10,10,10,10" Width="100" HorizontalAlignment="Right" Click="cancel_Click"></Button>
+                <Button x:Name="save" Content="Save" Margin="10,10,0,10" Width="100" HorizontalAlignment="Left" Command="{Binding addGadgetCom}" CommandParameter="{Binding ElementName=NewWindow}"></Button>
+                <Button x:Name="cancel" Content="Cancel" Margin="10,10,10,10" Width="100" HorizontalAlignment="Right" Command="{Binding cancelGadgetCom}" CommandParameter="{Binding ElementName=NewWindow}"></Button>
             </DockPanel>
             <StackPanel Orientation="Vertical">
                 <TextBlock Margin="20,10,0,10" FontSize="32">New Gadget</TextBlock>
                 <TextBlock Margin="20,10,0,10">Add the data for a new gadget !</TextBlock>
                 <DockPanel Margin="20,5,20,0">
                     <TextBlock DockPanel.Dock="Left" Width="150"><Run Text="Description"/></TextBlock>
-                    <TextBox x:Name="input_add_description" HorizontalAlignment="Stretch"/>
+                    <TextBox HorizontalAlignment="Stretch" Text="{Binding newGadget.Name}"/>
                 </DockPanel>
                 <DockPanel Margin="20,10,20,0">
                     <TextBlock DockPanel.Dock="Left" Width="150"><Run Text="Manufacturer"/></TextBlock>
-                    <TextBox x:Name="input_add_manufacturer" HorizontalAlignment="Stretch"/>
+                    <TextBox HorizontalAlignment="Stretch" Text="{Binding newGadget.Manufacturer}" />
                 </DockPanel>
                 <DockPanel Margin="20,10,20,0">
                     <TextBlock DockPanel.Dock="Left" Width="150">Price</TextBlock>
-                    <TextBox x:Name="input_add_price" HorizontalAlignment="Stretch"/>
+                    <TextBox HorizontalAlignment="Stretch" Text="{Binding newGadget.Price}"/>
                 </DockPanel>
                 <DockPanel Margin="20,10,20,0">
                     <TextBlock DockPanel.Dock="Left" Width="150">Condition</TextBlock>
-                    <ComboBox Name="input_add_condition">
-                        <ComboBoxItem>NEW</ComboBoxItem>
-                        <ComboBoxItem>GOOD</ComboBoxItem>
-                        <ComboBoxItem>DAMAGED</ComboBoxItem>
-                        <ComboBoxItem>WASTED</ComboBoxItem>
-                        <ComboBoxItem>LOST</ComboBoxItem>
+                    <ComboBox Name="input_add_condition" ItemsSource="{Binding Source={StaticResource conds}}" SelectedValue="{Binding newGadget.Condition, Converter={StaticResource converter}}">
                     </ComboBox>
                 </DockPanel>
             </StackPanel>

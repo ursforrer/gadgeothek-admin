@@ -8,13 +8,14 @@
         mc:Ignorable="d"
         BorderBrush="Black"
         BorderThickness="2"
+        x:Name="delWindow" 
         Icon="icon.ico"              
         Title="Gadgeothek - Add new Gadget" Height="350" Width="525">
     <Grid>
         <DockPanel>
             <DockPanel DockPanel.Dock="Bottom">
-                <Button x:Name="yes" Content="Yes, Delete" Margin="10,10,0,10" Width="100" HorizontalAlignment="Left"></Button>
-                <Button x:Name="no" Content="No, Cancel" Margin="10,10,10,10" Width="100" HorizontalAlignment="Right" Click="no_Click"></Button>
+                <Button x:Name="yes" Content="Yes, Delete" Margin="10,10,0,10" Width="100" HorizontalAlignment="Left" CommandParameter="{Binding ElementName=delWindow}" Command="{Binding sureGadgetCom}"></Button>
+                <Button x:Name="no" Content="No, Cancel" Margin="10,10,10,10" Width="100" HorizontalAlignment="Right" CommandParameter="{Binding ElementName=delWindow}" Command="{Binding cancelGadgetCom}"></Button>
             </DockPanel>
             <StackPanel Orientation="Vertical">
                 <TextBlock Margin="20,10,0,10" FontSize="32">Delete Gadget</TextBlock>
@@ -37,11 +38,11 @@
                     <Label Grid.Row="2" Content="Price"/>
                     <Label Grid.Row="3" Content="Manufacturer"/>
                     <Label Grid.Row="4" Content="Name"/>
-                    <TextBlock Grid.Row="0" Grid.Column="1" VerticalAlignment="Center" x:Name="nr"/>
-                    <TextBlock Grid.Row="1" Grid.Column="1" VerticalAlignment="Center" x:Name="cond"/>
-                    <TextBlock Grid.Row="2" Grid.Column="1" VerticalAlignment="Center" x:Name="price"/>
-                    <TextBlock Grid.Row="3" Grid.Column="1" VerticalAlignment="Center" x:Name="manu"/>
-                    <TextBlock Grid.Row="4" Grid.Column="1" VerticalAlignment="Center" x:Name="name"/>
+                    <TextBlock Grid.Row="0" Grid.Column="1" VerticalAlignment="Center" Text="{Binding delGadget.InventoryNumber}"/>
+                    <TextBlock Grid.Row="1" Grid.Column="1" VerticalAlignment="Center" Text="{Binding delGadget.Condition}"/>
+                    <TextBlock Grid.Row="2" Grid.Column="1" VerticalAlignment="Center" Text="{Binding delGadget.Price}"/>
+                    <TextBlock Grid.Row="3" Grid.Column="1" VerticalAlignment="Center" Text="{Binding delGadget.Manufacturer}"/>
+                    <TextBlock Grid.Row="4" Grid.Column="1" VerticalAlignment="Center" Text="{Binding delGadget.Name}"/>
                 </Grid>
             </StackPanel>
         </DockPanel>

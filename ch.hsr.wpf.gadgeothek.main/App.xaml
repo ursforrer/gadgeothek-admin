@@ -2,9 +2,23 @@
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:local="clr-namespace:ch.hsr.wpf.gadgeothek.main"
+             xmlns:sys="clr-namespace:System;assembly=mscorlib"
+             xmlns:do="clr-namespace:ch.hsr.wpf.gadgeothek.domain;assembly=ch.hsr.wpf.gadgeothek"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
         <ResourceDictionary>
+
+            <ObjectDataProvider x:Key="conds"
+                MethodName="GetNames"
+                ObjectType="{x:Type sys:Enum}">
+                <ObjectDataProvider.MethodParameters>
+                    <x:Type TypeName="do:Condition" />
+                </ObjectDataProvider.MethodParameters>
+            </ObjectDataProvider>
+
+            <local:convert x:Key="converter" />
+
+
             <ResourceDictionary.MergedDictionaries>
                 <!-- MahApps.Metro resource dictionaries. Make sure that all file names are Case Sensitive! -->
                 <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Controls.xaml" />
@@ -14,6 +28,8 @@
                 <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Accents/Blue.xaml" />
                 <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Accents/BaseLight.xaml" />
             </ResourceDictionary.MergedDictionaries>
+            
+            
         </ResourceDictionary>
     </Application.Resources>
 </Application>

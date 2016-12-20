@@ -9,12 +9,12 @@ namespace ch.hsr.wpf.gadgeothek.main
 {
 
     // Implementation gemäss den Vorlesungsfolien
-    class RelayCommand : ICommand
+    class RelayCommand<T> : ICommand
     {
-        private readonly Action _excecute;
-        private readonly Func<bool> _canExecute;
+        private readonly Action<T> _excecute;
+        private readonly Predicate<T> _canExecute;
 
-        public RelayCommand(Action execute, Func<bool> canExecute = null)
+        public RelayCommand(Action<T> execute, Predicate<T> canExecute = null)
         {
             if (execute == null) throw new ArgumentNullException("execute");
 
@@ -22,9 +22,9 @@ namespace ch.hsr.wpf.gadgeothek.main
             _canExecute = canExecute;
         }
 
-        public bool CanExecute(object parameter) => _canExecute?.Invoke() ?? true;
+        public bool CanExecute(object parameter) => _canExecute?.Invoke((T)parameter) ?? true;
 
-        public void Execute(object parameter) => _excecute();
+        public void Execute(object parameter) => _excecute((T)parameter);
 
         public event EventHandler CanExecuteChanged
         {

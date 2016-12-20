@@ -29,8 +29,8 @@ namespace ch.hsr.wpf.gadgeothek.main.vms
         {
             initalLoadGadgets();
 
-            newGadgetCom = new RelayCommand(() => funcNewGadget(), () => true);
-            delGadgetCom = new RelayCommand(() => funcDelGadget(), () => true);
+            newGadgetCom = new RelayCommand<Gadget>((x) => funcNewGadget(), (x) => true);
+            delGadgetCom = new RelayCommand<Gadget>((x) => funcDelGadget(), (x) => true);
 
             client.NotificationReceived += (o, e) =>
             {
@@ -58,8 +58,8 @@ namespace ch.hsr.wpf.gadgeothek.main.vms
 
         private void funcNewGadget()
         {
-            newGadget newwindow = new newGadget();
-            newwindow.Show();
+            var window = new newGadget();
+            window.Show();
         }
 
         private void funcDelGadget()
@@ -72,21 +72,8 @@ namespace ch.hsr.wpf.gadgeothek.main.vms
             }
             else
             {
-                deleteWindow deletewindow = new deleteWindow(selGadget);
+                var deletewindow = new deleteWindow(selGadget);
                 deletewindow.Show();
-                deletewindow.yes.Click += delegate
-                {
-                    if (service.DeleteGadget(selGadget))
-                    {
-                        //Close the window, if the operation was succesfull
-                        deletewindow.Close();
-                    }
-                    else
-                    {
-                        // Print an error message if the operation failed.
-                        MessageBox.Show("It didn't work. Check your connection to the server and try it again.");
-                    }
-                };
             }
 
         }
